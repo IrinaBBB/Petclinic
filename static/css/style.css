@@ -17,9 +17,32 @@ body {
   #hero .hero-content {
     padding-top: 4.5rem; }
 
-@media (max-width: 768px) {
+#newsletter {
+  background-color: #e9ecef; }
+
+#boxes .icon-wrapper {
+  font-size: 5rem;
+  color: #9198b6; }
+#boxes .card {
+  height: 23rem; }
+#boxes div:nth-child(even) > div {
+  background: #9198b6; }
+  #boxes div:nth-child(even) > div h3 {
+    color: white !important; }
+  #boxes div:nth-child(even) > div p {
+    color: white !important; }
+  #boxes div:nth-child(even) > div .icon-wrapper {
+    color: white; }
+
+@media (max-width: 992px) {
+  .mb-resp {
+    margin-bottom: 1rem; }
+
+  #boxes .card {
+    height: 19rem; } }
+@media (max-width: 576px) {
   #hero {
-    min-height: 500px; }
+    min-height: 450px; }
     #hero h1 {
       font-size: 4rem; } }
 

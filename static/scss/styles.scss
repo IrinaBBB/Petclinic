@@ -1,6 +1,7 @@
 $primary: #9198b6;
 $primary-overlay: rgba(145, 152, 182, 0.85);
 $primary-light: #c2c9e8;
+$grey: #e9ecef;
 
 body {
     margin-top: 78px;
@@ -26,16 +27,47 @@ body {
     }
 }
 
+#newsletter {
+    background-color: $grey;
+}
 
 
+#boxes {
+    .icon-wrapper {
+        font-size: 5rem;
+        color: $primary;
+    }
+    .card {
+        height: 23rem;
+    }
+    div:nth-child(even) > div {
+        background: $primary;
+        h3 {
+            color: white!important;
+        } 
+        p {
+            color: white !important;
+        }
+        .icon-wrapper {
+            color: white;
+        }
+    }
+}
 
+@media(max-width: 992px) {
+    .mb-resp {
+        margin-bottom: 1rem;
+    }
+    #boxes {
+        .card {
+            height: 19rem;
+        }
+    }
+}
 
-
-
-
-@media(max-width: 768px) {
+@media(max-width: 576px) {
     #hero {
-        min-height: 500px;
+        min-height: 450px;
         h1 {
             font-size: 4rem;
         }

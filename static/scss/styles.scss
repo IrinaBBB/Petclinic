@@ -1,0 +1,43 @@
+$primary: #9198b6;
+$primary-overlay: rgba(145, 152, 182, 0.85);
+$primary-light: #c2c9e8;
+
+body {
+    margin-top: 78px;
+}
+
+.navbar {
+    box-shadow: 2px 2px 5px $primary-light;
+    opacity: 0.9;
+    background: #fff;
+    .nav-item {
+        font-size: 1.3rem;
+        padding-right: 1.3rem;
+    }
+}
+
+#hero {
+    background-image: linear-gradient($primary-overlay, $primary-overlay), url('../img/hero.jpg');
+    background-position: center;
+    object-fit: cover;
+    min-height: 600px;
+    .hero-content {
+        padding-top: 4.5rem;
+    }
+}
+
+
+
+
+
+
+
+
+@media(max-width: 768px) {
+    #hero {
+        min-height: 500px;
+        h1 {
+            font-size: 4rem;
+        }
+    }
+}

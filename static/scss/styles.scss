@@ -1,7 +1,8 @@
-$primary: #9198b6;
-$primary-overlay: rgba(145, 152, 182, 0.85);
-$primary-light: #c2c9e8;
+$primary: #283593;
+$primary-dark: #001064;
+$primary-light:	#5f5fc4;
 $grey: #e9ecef;
+$accent: #ebe645;
 
 body {
     margin-top: 78px;
@@ -18,7 +19,7 @@ body {
 }
 
 #hero {
-    background-image: linear-gradient($primary-overlay, $primary-overlay), url('../img/hero.jpg');
+    background-image: linear-gradient(to right bottom, rgba(darken($primary-dark, 10%), 0.95), rgba(lighten($primary-dark, 50%), 0.90)), url('../img/hero.jpg');
     background-position: center;
     object-fit: cover;
     min-height: 600px;
@@ -30,7 +31,6 @@ body {
 #newsletter {
     background-color: $grey;
 }
-
 
 #boxes {
     .icon-wrapper {

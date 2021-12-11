@@ -48,3 +48,12 @@ a, .btn-link {
         right: 0.75rem;
         top: 0.5rem;
     }
+
+.not-found {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.not-found__image {
+    width: 40%;
+}

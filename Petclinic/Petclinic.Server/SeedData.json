@@ -1,0 +1,94 @@
+[
+  {
+    "Name": "cat",
+    "Pets": [
+      {
+        "Name": "Max",
+        "Weight": 3,
+        "Sex": "male"
+      },
+      {
+        "Name": "Tiger",
+        "Weight": 3,
+        "Sex": "male"
+      },
+      {
+        "Name": "Lana",
+        "Weight": 5,
+        "Sex": "female"
+      }
+    ]
+  },
+  {
+    "Name": "dog",
+    "Pets": [
+      {
+        "Name": "Cookie",
+        "Weight": 7,
+        "Sex": "female"
+      },
+      {
+        "Name": "Buddy",
+        "Weight": 1,
+        "Sex": "male"
+      },
+      {
+        "Name": "Betsy",
+        "Weight": 3,
+        "Sex": "female"
+      }
+    ]
+  },
+  {
+    "Name": "hamster",
+    "Pets": [
+      {
+        "Name": "Cupcake",
+        "Sex": "male"
+      },
+      {
+        "Name": "Duncan",
+        "Sex": "male"
+      },
+      {
+        "Name": "Biscuit",
+        "Sex": "female"
+      }
+    ]
+  },
+  {
+    "Name": "parrot",
+    "Pets": [
+      {
+        "Name": "George",
+        "Weight": 1,
+        "Sex": "male"
+      },
+      {
+        "Name": "Lola",
+        "Weight": 1,
+        "Sex": "female"
+      },
+      {
+        "Name": "Ollie",
+        "Weight": 1,
+        "Sex": "male"
+      }
+    ]
+  },
+  {
+    "Name": "ferret",
+    "Pets": [
+      {
+        "Name": "Zippy",
+        "Weight": 2,
+        "Sex": "male"
+      },
+      {
+        "Name": "Peppy",
+        "Weight": 2,
+        "Sex": "female"
+      }
+    ]
+  }
+]

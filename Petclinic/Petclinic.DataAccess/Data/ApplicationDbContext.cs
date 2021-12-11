@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Petclinic.DataAccess.Entities;
 
 namespace Petclinic.DataAccess.Data
 {
@@ -6,6 +7,7 @@ namespace Petclinic.DataAccess.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-
+        public DbSet<PetType> PetTypes { get; set; }
+        public DbSet<Pet> Pets { get; set; }
     }
 }

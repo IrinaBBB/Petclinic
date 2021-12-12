@@ -9,7 +9,7 @@
 }
 
 .sidebar {
-    background-image: linear-gradient(to right bottom, rgba(0, 8, 49, 0.95), rgba(100, 125, 255, 0.9));
+    background-image: linear-gradient(to right bottom, rgba(0, 8, 49, 0.50), rgba(100, 125, 255, 0.50));
 }
 
 .top-row {
@@ -31,7 +31,7 @@
         text-overflow: ellipsis;
     }
 
-@media (max-width: 640.98px) {
+@media (max-width: 850px) {
     .top-row:not(.auth) {
         display: none;
     }
@@ -45,7 +45,7 @@
     }
 }
 
-@media (min-width: 641px) {
+@media (min-width: 850px) {
     .page {
         flex-direction: row;
     }
@@ -64,7 +64,7 @@
     }
 
     .main > div {
-        padding-left: 2rem !important;
-        padding-right: 1.5rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
     }
 }

@@ -50,13 +50,12 @@
     color: white;
 }
 
-
 .petclinic-logo {
     display: none;
 }
 
 
-@media (min-width: 641px) {
+@media (min-width: 850px) {
     .top-row, .pl-4, .navbar, .navbar-dark { display: none; }
 
     .navbar-toggler { display: none; }
@@ -73,6 +72,8 @@
         width: 55%;
         margin: auto;
         margin-top: 10%;
+        -ms-opacity: 0.6;
+        opacity: 0.6;
     }
 }
 

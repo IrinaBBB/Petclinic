@@ -1,6 +1,9 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+
+
 html, body {
+    --mud-palette-primary: #3d4eca;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -56,4 +59,6 @@ a, .btn-link {
 
 .not-found__image {
     width: 40%;
+    -ms-opacity: 0.6;
+    opacity: 0.6;
 }

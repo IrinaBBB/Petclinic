@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Petclinic.Server", "Petclinic.Server\Petclinic.Server.csproj", "{A94559B7-E99D-41A2-A84C-B4CCF473E219}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Petclinic.Server", "Petclinic.Server\Petclinic.Server.csproj", "{A94559B7-E99D-41A2-A84C-B4CCF473E219}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Petclinic.DataAccess", "Petclinic.DataAccess\Petclinic.DataAccess.csproj", "{F52EF17D-1F9E-49BC-BAB9-7D40454B8FDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Petclinic.DataAccess", "Petclinic.DataAccess\Petclinic.DataAccess.csproj", "{F52EF17D-1F9E-49BC-BAB9-7D40454B8FDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Petclinic.Common", "Petclinic.Common\Petclinic.Common.csproj", "{8964671D-D4F0-4348-B70B-CBA61DE81FDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Petclinic.Common", "Petclinic.Common\Petclinic.Common.csproj", "{8964671D-D4F0-4348-B70B-CBA61DE81FDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Petclinic.Business", "Petclinic.Business\Petclinic.Business.csproj", "{8CE2B8F8-CFE5-4723-A2F2-5689A5712D89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Petclinic.Business", "Petclinic.Business\Petclinic.Business.csproj", "{8CE2B8F8-CFE5-4723-A2F2-5689A5712D89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Petclinic.Models", "Petclinic.Models\Petclinic.Models.csproj", "{EA45EDBA-291A-4C8F-A32D-301025D03FF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Petclinic.Models", "Petclinic.Models\Petclinic.Models.csproj", "{EA45EDBA-291A-4C8F-A32D-301025D03FF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Petclinic.Client", "Petclinic.Client\Petclinic.Client.csproj", "{75359277-52E2-4F0E-94A3-48D4345D8E7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Petclinic.Client", "Petclinic.Client\Petclinic.Client.csproj", "{75359277-52E2-4F0E-94A3-48D4345D8E7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

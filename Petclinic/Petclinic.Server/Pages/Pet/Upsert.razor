@@ -1,0 +1,72 @@
+﻿@page "/pet/add"
+@using Petclinic.Models.PetType
+@inject IPetTypeRepository _petTypeRepository
+@inject IPetRepository _petRepository
+@inject NavigationManager _navigationManager
+
+
+
+<div style="max-width: 800px;">
+    <EditForm Model="@_model" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator />
+        <MudCard>
+            <MudCardContent>
+                <h2>
+                    <span>@Title a Pet</span> <img src="img/pawprint-primary.svg" class="header-decoration" alt="paw-logo" />
+                </h2>
+                <MudTextField Label="Pet Name"
+                              @bind-Value="_model.Name" For="@(() => _model.Name)" />
+                <MudItem xs="12" sm="6" md="4">
+                    <MudSelect @bind-Value="SelectedPetType" T="PetTypeDto" Label="Pet Type" AnchorOrigin="Origin.BottomCenter">
+                        @foreach (var petType in PetTypes){
+                            <MudSelectItem Value="@petType">@petType.Name.ToUpper()</MudSelectItem>
+                        }
+                    </MudSelect>
+                    <ValidationMessage For="() => _model.PetType"/>
+                </MudItem>
+                <div class="d-flex mt-2">
+                    <MudRadioGroup @bind-SelectedOption="_model.Sex" For="@(() => _model.Sex)" T="string" RequiredError="Account type is required!">
+                        <MudRadio Option="@("male")">Male</MudRadio>
+                        <MudRadio Option="@("female")">Female</MudRadio>
+                        <MudRadio Option="@("unknown")">Unknown</MudRadio>
+                    </MudRadioGroup>
+                </div>
+                <ValidationMessage For="() => _model.Sex"/>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudNumericField @bind-Value="_model.Weight" AdornmentColor="Color.Primary" HelperText="Weight" Variant="Variant.Text" Adornment="Adornment.End" AdornmentText="Kg" HideSpinButtons="true" />
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudDatePicker @bind-Date="_model.DateOfBirth" PickerVariant="PickerVariant.Dialog" Label="Pet's Date of Birth" AdornmentColor="Color.Primary" />
+                </MudItem>
+                <MudTextField Label="Additional Data" Lines="6"
+                              @bind-Value="_model.AdditionalData" For="@(() => _model.AdditionalData)" />
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Filled" Class="ml-auto" Link="/">Back To List</MudButton>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-4">@Title</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </EditForm>
+</div>
+
+
+@code {
+
+    private string Title { get; set; } = "Add";
+    private IEnumerable<PetTypeDto> PetTypes { get; set; }
+    private PetTypeDto SelectedPetType { get; set; }
+    private readonly PetDto _model = new PetDto();
+
+
+    protected override void OnInitialized()
+    {
+        PetTypes = _petTypeRepository.GetAllPetTypes();
+    }
+
+    private async Task OnValidSubmit()
+    {
+        _model.PetTypeId = SelectedPetType.Id;
+        var createResult = await _petRepository.CreatePet(_model);
+        _navigationManager.NavigateTo("/");
+    }
+}

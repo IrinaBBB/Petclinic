@@ -22,11 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Petclinic.Business\Petclinic.Business.csproj" />
     <ProjectReference Include="..\Petclinic.DataAccess\Petclinic.DataAccess.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\Pet\" />
+    <ProjectReference Include="..\Petclinic.Models\Petclinic.Models.csproj" />
   </ItemGroup>
 
 </Project>

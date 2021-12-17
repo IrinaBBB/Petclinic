@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
+using Petclinic.Business.Repository;
+using Petclinic.Business.Repository.IRepository;
 using Petclinic.DataAccess.Data;
 
 namespace Petclinic.Server
@@ -31,6 +33,9 @@ namespace Petclinic.Server
             });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddMudServices();
+
+            services.AddScoped<IPetRepository, PetRepository>();
+            services.AddScoped<IPetTypeRepository, PetTypeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,39 @@
+﻿@*@using Petclinic.Models.Pet
+
+<MudTable Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
+    <HeaderContent>
+        <MudTh>Name</MudTh>
+        <MudTh>Weight</MudTh>
+        <MudTh>Type</MudTh>
+        <MudTh>Sex</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        @foreach (var pet in (PetListModel))
+        {
+            <MudTd DataLabel="Sign">@pet.Name</MudTd>
+            <MudTd DataLabel="Name">@pet.Weight</MudTd>
+            <MudTd DataLabel="Type">@pet.PetTypeId</MudTd>
+            <MudTd DataLabel="Sex">@pet.Sex</MudTd>
+        }
+    </RowTemplate>
+</MudTable>
+
+<MudSwitch @bind-Checked="_hidePosition">Hide <b>position</b> when Breakpoint=Xs</MudSwitch>
+<MudSwitch @bind-Checked="_loading">Show Loading</MudSwitch>
+
+@code {
+    private bool _hidePosition;
+    private bool _loading;
+    private IEnumerable<PetDto> PetListModel = new List<PetDto>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        //PetListModel = await .GetFromJsonAsync<List<Element>>("webapi/periodictable");
+    }
+}
+
+@code {
+
+}*@
+
+

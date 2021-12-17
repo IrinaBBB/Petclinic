@@ -47,7 +47,7 @@ namespace Petclinic.Business.Repository
             var petToDelete = await _context.Pets.FirstOrDefaultAsync(p => p.Id == petId);
 
             if (petToDelete == null) return null;
-            
+
             _context.Pets.Remove(petToDelete);
             await _context.SaveChangesAsync();
             return _mapper.Map<Pet, PetDto>(petToDelete);
@@ -60,7 +60,12 @@ namespace Petclinic.Business.Repository
 
         public IEnumerable<PetDto> GetAllPets()
         {
-            return _mapper.Map<IEnumerable<Pet>, IEnumerable<PetDto>>(_context.Pets);
+            return _mapper.Map<IEnumerable<Pet>, IEnumerable<PetDto>>(
+                _context
+                    .Pets
+                    .Include(s => s.PetType)
+                    .ToList()
+            );
         }
     }
 }

@@ -1,0 +1,8 @@
+﻿h2 {
+    color: var(--mud-palette-primary);
+}
+
+.mud-paper .mud-card-content .header-decoration {
+    width: 35px;
+    margin-top: -7px;
+}

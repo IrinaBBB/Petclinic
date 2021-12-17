@@ -22,5 +22,6 @@ namespace Petclinic.DataAccess.Entities
         public string AdditionalData { get; set; }
 
         public int PetTypeId { get; set; }
+        public virtual PetType PetType { get; set; }
     }
 }

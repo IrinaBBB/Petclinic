@@ -1,8 +1,5 @@
 ﻿@page "/pet/add"
 @using Petclinic.Models.PetType
-@using System.ComponentModel.DataAnnotations
-@using Petclinic.Server.Validators
-@using System.ComponentModel
 @inject IPetTypeRepository _petTypeRepository
 @inject IPetRepository _petRepository
 @inject NavigationManager _navigationManager
@@ -90,6 +87,6 @@
     {
         _model.PetTypeId = SelectedPetType.Id;
         var createResult = await _petRepository.CreatePet(_model);
-        //_navigationManager.NavigateTo("/");
+        _navigationManager.NavigateTo("/");
     }
 }

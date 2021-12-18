@@ -1,24 +1,33 @@
 ﻿@page "/"
 @inject IPetRepository _petRepository
 
-
+<div class="FAB-container">
+    <MudFab Color="Color.Primary" Icon="@Icons.Material.Filled.Add" Link="pet/add" aria-label="add"/>
+</div>
 <MudTabs Elevation="1" Rounded="true" ApplyEffectsToContainer="true">
     <MudTabPanel Text="All Pets">
         <MudText>
-            <MudTable Items="@_petListModel.Take(20)" Hover="true" Striped="true" Elevation="1" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
-                <HeaderContent>
-                    <MudTh>Name</MudTh>
-                    <MudTh>Weight</MudTh>
-                    <MudTh>Type</MudTh>
-                    <MudTh>Sex</MudTh>
-                </HeaderContent>
-                <RowTemplate>
-                    <MudTd DataLabel="Name">@context.Name</MudTd>
-                    <MudTd DataLabel="Weight">@(context.Weight == null ? "Not known" : context.Weight)</MudTd>
-                    <MudTd DataLabel="Type">@context.PetType.Name</MudTd>
-                    <MudTd DataLabel="Sex">@context.Sex</MudTd>
-                </RowTemplate>
-            </MudTable>
+            @if (_petListModel.Any())
+            {
+                <MudTable Items="@_petListModel.Take(20)" Hover="true" Striped="true" Elevation="1" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
+                    <HeaderContent>
+                        <MudTh>Name</MudTh>
+                        <MudTh>Weight</MudTh>
+                        <MudTh>Type</MudTh>
+                        <MudTh>Sex</MudTh>
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTd DataLabel="Name">@context.Name</MudTd>
+                        <MudTd DataLabel="Weight">@(context.Weight == null ? "Not known" : context.Weight)</MudTd>
+                        <MudTd DataLabel="Type">@context.PetType.Name</MudTd>
+                        <MudTd DataLabel="Sex">@context.Sex</MudTd>
+                    </RowTemplate>
+                </MudTable>
+            }
+            else
+            {
+                <MudAlert Severity="Severity.Normal">No Pets Registered Yet</MudAlert>
+            }
         </MudText>
     </MudTabPanel>
     <MudTabPanel Text="Tab Two">
@@ -28,7 +37,6 @@
         <MudText>Content Three</MudText>
     </MudTabPanel>
 </MudTabs>
-<MudFab Color="Color.Primary" Icon="@Icons.Material.Filled.Add" Link="pet/add" aria-label="add" />
 
 
 @code {

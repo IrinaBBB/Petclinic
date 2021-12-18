@@ -9,18 +9,30 @@
         <MudText>
             @if (_petListModel.Any())
             {
-                <MudTable Items="@_petListModel.Take(10)" Hover="true" Striped="true" Elevation="1" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
+                <MudTable Items="@_petListModel.Take(15)" Hover="true" Striped="true" Elevation="1" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
                     <HeaderContent>
                         <MudTh>Name</MudTh>
                         <MudTh>Weight</MudTh>
                         <MudTh>Type</MudTh>
                         <MudTh>Sex</MudTh>
+                        <MudTh>&nbsp;</MudTh>
                     </HeaderContent>
                     <RowTemplate>
                         <MudTd DataLabel="Name">@context.Name</MudTd>
                         <MudTd DataLabel="Weight">@(context.Weight == null ? "Unknown" : context.Weight)</MudTd>
                         <MudTd DataLabel="Type">@context.PetType.Name</MudTd>
                         <MudTd DataLabel="Sex">@context.Sex</MudTd>
+                        <MudTd DataLabel="&nbsp;">
+                            <MudButton Link="@($"pet/details/{@context.Id}")" Variant="Variant.Text" Color="Color.Warning">
+                                <span class="oi oi-info" aria-hidden="true"></span>
+                            </MudButton>
+                            <MudButton Link="@($"pet/edit/{@context.Id}")" Variant="Variant.Text" Color="Color.Primary">
+                                <span class="oi oi-pencil" aria-hidden="true"></span>
+                            </MudButton>
+                            <MudButton Link="@($"pet/delete/{@context.Id}")" Variant="Variant.Text" Color="Color.Secondary">
+                                <span class="oi oi-trash" aria-hidden="true"></span>
+                            </MudButton>
+                        </MudTd>
                     </RowTemplate>
                 </MudTable>
             }
@@ -44,6 +56,7 @@
 
     protected override void OnInitialized()
     {
-        _petListModel =  _petRepository.GetAllPets();
+        _petListModel = _petRepository.GetAllPets();
     }
+
 }

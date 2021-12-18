@@ -1,4 +1,6 @@
 ﻿@page "/pet/add"
+@page "/pet/edit/{Id:int}"
+
 @using Petclinic.Models.PetType
 @inject IPetTypeRepository _petTypeRepository
 @inject IPetRepository _petRepository
@@ -70,29 +72,57 @@
 
 
 @code {
+    [Parameter]
+    public int? Id { get; set; }
+
 
     private string Title { get; set; } = "Add";
     private IEnumerable<PetTypeDto> PetTypes { get; set; }
-    private PetTypeDto SelectedPetType { get; set; }
-    private readonly PetDto _model = new PetDto();
+    private PetDto _model = new();
 
 
-    public string ConfirmMessage = "Are you sure want to click?";
-
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         PetTypes = _petTypeRepository.GetAllPetTypes();
+
+        if (Id != null)
+        {
+            Title = "Update";
+            _model = await _petRepository.GetPet(Id.Value);
+        }
+        else
+        {
+            _model = new PetDto();
+        }
     }
 
     private async Task OnValidSubmit()
     {
-        //_model.PetTypeId = SelectedPetType.Id;
-       
-        var createResult = await _petRepository.CreatePet(_model);
-        if (createResult != null)
+        if (_model.Id != 0 && Title == "Update")
         {
-            _navigationManager.NavigateTo("/");
-            await _jsRunTime.SweetAlertSuccess($"Pet with Name {createResult.Name} is Created");
+            var updatedResult = await _petRepository.UpdatePet(_model.Id, _model);
+            if (updatedResult != null)
+            {
+                _navigationManager.NavigateTo($"pet/edit/{_model.Id}");
+                await _jsRunTime.SweetAlertSuccess($"Pet with Name {updatedResult.Name} is Updated");
+            }
+            else
+            {
+                await _jsRunTime.ToastrError("The Pet has not been Updated");
+            }
+        }
+        else
+        {
+            var createResult = await _petRepository.CreatePet(_model);
+            if (createResult != null)
+            {
+                _navigationManager.NavigateTo("/");
+                await _jsRunTime.SweetAlertSuccess($"Pet with Name {createResult.Name} is Created");
+            }
+            else
+            {
+                await _jsRunTime.ToastrError("The Pet has not been Created");
+            }
         }
     }
 }

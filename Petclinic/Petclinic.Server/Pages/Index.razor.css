@@ -2,7 +2,7 @@
     width: 56px;
     height: 0;
     position: sticky;
-    top: 90%;
+    top: 13%;
     left: 92%;
     z-index: 100;
 }
@@ -11,5 +11,6 @@
 @media only screen and (max-width: 600px) {
     .FAB-container {
         left: 50%;
+        top: 80%;
     }
 }

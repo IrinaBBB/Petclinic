@@ -9,7 +9,7 @@
         <MudText>
             @if (_petListModel.Any())
             {
-                <MudTable Items="@_petListModel.Take(20)" Hover="true" Striped="true" Elevation="1" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
+                <MudTable Items="@_petListModel.Take(10)" Hover="true" Striped="true" Elevation="1" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
                     <HeaderContent>
                         <MudTh>Name</MudTh>
                         <MudTh>Weight</MudTh>
@@ -18,7 +18,7 @@
                     </HeaderContent>
                     <RowTemplate>
                         <MudTd DataLabel="Name">@context.Name</MudTd>
-                        <MudTd DataLabel="Weight">@(context.Weight == null ? "Not known" : context.Weight)</MudTd>
+                        <MudTd DataLabel="Weight">@(context.Weight == null ? "Unknown" : context.Weight)</MudTd>
                         <MudTd DataLabel="Type">@context.PetType.Name</MudTd>
                         <MudTd DataLabel="Sex">@context.Sex</MudTd>
                     </RowTemplate>

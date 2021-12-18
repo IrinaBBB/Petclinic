@@ -3,7 +3,8 @@
 
 
 html, body {
-    --mud-palette-primary: #3d4eca;
+    /*--mud-palette-primary: #3d4eca;*/
+    --mud-palette-primary: #325DE9;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 

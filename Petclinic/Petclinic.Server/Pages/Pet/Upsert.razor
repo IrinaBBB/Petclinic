@@ -4,8 +4,6 @@
 @inject IPetRepository _petRepository
 @inject NavigationManager _navigationManager
 
-
-
 <div style="max-width: 800px;">
     <EditForm Model="@_model" OnValidSubmit="OnValidSubmit">
         <FluentValidationValidator />
@@ -20,13 +18,14 @@
 
                 @* Pet Type *@
                 <MudItem xs="12" sm="6" md="4">
-                    <MudSelect @bind-Value="SelectedPetType" T="PetTypeDto" Label="Pet Type" For="@(() => _model.PetType)" AnchorOrigin="Origin.BottomCenter">
+                    <MudSelect @bind-Value="_model.PetTypeId" For="@(() => _model.PetTypeId)" T="int" Label="Pet Type" AnchorOrigin="Origin.BottomCenter">
                         @foreach (var petType in PetTypes)
                         {
-                            <MudSelectItem Value="@petType">@petType.Name.ToUpper()</MudSelectItem>
+                            <MudSelectItem Value="@petType.Id">@petType.Name.ToUpper()</MudSelectItem>
                         }
                     </MudSelect>
                 </MudItem>
+                <ValidationMessage For="() => _model.PetType" />
 
                 @* Pet Sex *@
                 <div class="d-flex mt-2">
@@ -76,7 +75,9 @@
     private IEnumerable<PetTypeDto> PetTypes { get; set; }
     private PetTypeDto SelectedPetType { get; set; }
     private readonly PetDto _model = new PetDto();
-  
+
+
+    public string ConfirmMessage = "Are you sure want to click?";
 
     protected override void OnInitialized()
     {
@@ -85,8 +86,13 @@
 
     private async Task OnValidSubmit()
     {
-        _model.PetTypeId = SelectedPetType.Id;
+        //_model.PetTypeId = SelectedPetType.Id;
+       
         var createResult = await _petRepository.CreatePet(_model);
-        _navigationManager.NavigateTo("/");
+        if (createResult != null)
+        {
+            _navigationManager.NavigateTo("/");
+            await _jsRunTime.SweetAlertSuccess($"Pet with Name {createResult.Name} is Created");
+        }
     }
 }

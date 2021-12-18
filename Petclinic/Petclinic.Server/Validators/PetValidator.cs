@@ -11,11 +11,12 @@ namespace Petclinic.Server.Validators
             RuleFor(p => p.Name).NotEmpty().WithMessage("Pet Name is Required");
             RuleFor(p => p.Name).MaximumLength(100).WithMessage("Pet Name Should not Exceed 100 Characters");
 
-            RuleFor(p => p.PetType).NotEmpty().WithMessage("Pet Type is Required");
+            RuleFor(p => p.PetTypeId).NotEmpty().WithMessage("Pet Type is Required");
 
             RuleFor(p => p.Sex).NotEmpty().WithMessage("Sex is required");
 
             RuleFor(p => p.Weight).LessThanOrEqualTo(100).WithMessage("Weight Should not Exceed 100 kilos");
+            RuleFor(p => p.Weight).GreaterThanOrEqualTo(0).WithMessage("Weight cannot be Less than 0");
 
             RuleFor(p => p.DateOfBirth)
                 .GreaterThan(DateTime.Now.AddYears(-100))

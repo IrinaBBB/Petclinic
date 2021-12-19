@@ -2,13 +2,15 @@
 @page "/pet/edit/{Id:int}"
 
 @using Petclinic.Models.PetType
+@using Microsoft.AspNetCore.Components
+@using Petclinic.Models.Pet.ViewModels
 @inject IPetTypeRepository _petTypeRepository
 @inject IPetRepository _petRepository
 @inject NavigationManager _navigationManager
 
 <div style="max-width: 800px;">
     <EditForm Model="@_model" OnValidSubmit="OnValidSubmit">
-        <FluentValidationValidator />
+        <FluentValidationValidator/>
         <MudCard>
             <MudCardContent>
                 <h2>
@@ -17,6 +19,7 @@
 
                 @* Pet Name *@
                 <MudTextField Label="Pet Name" @bind-Value="_model.Name" For="@(() => _model.Name)" />
+
 
                 @* Pet Type *@
                 <MudItem xs="12" sm="6" md="4">
@@ -27,11 +30,13 @@
                         }
                     </MudSelect>
                 </MudItem>
-                <ValidationMessage For="() => _model.PetType" />
 
                 @* Pet Sex *@
                 <div class="d-flex mt-2">
-                    <MudRadioGroup @bind-SelectedOption="_model.Sex" For="@(() => _model.Sex)" T="string" RequiredError="Account type is required!">
+                    <MudRadioGroup @bind-SelectedOption="_model.Sex" 
+                                   For="@(() => _model.Sex)"
+                                   T="string" 
+                                   RequiredError="Account type is required!">
                         <MudRadio Option="@("male")">Male</MudRadio>
                         <MudRadio Option="@("female")">Female</MudRadio>
                         <MudRadio Option="@("unknown")">Unknown</MudRadio>
@@ -42,7 +47,23 @@
 
                 @* Pet Weight *@
                 <MudItem xs="12" sm="6" md="4">
-                    <MudNumericField @bind-Value="_model.Weight" For="@(() => _model.Weight)" Label="Weight" AdornmentColor="Color.Primary" Variant="Variant.Text" Adornment="Adornment.End" AdornmentText="Kg" HideSpinButtons="true" />
+                    <div class="d-flex">
+                        <MudNumericField @bind-Value="_model.Kilos" For="@(() => _model.Kilos)"
+                                         Label="kilos"
+                                         HelperText="Pet's Weight"
+                                         AdornmentColor="Color.Primary"
+                                         Variant="Variant.Text"
+                                         Adornment="Adornment.End"
+                                         AdornmentText="kg"
+                                         HideSpinButtons="true"/>
+                        <MudNumericField Class="ml-4" @bind-Value="_model.Grams" For="@(() => _model.Grams)"
+                                         Label="grams"
+                                         AdornmentColor="Color.Primary"
+                                         Variant="Variant.Text"
+                                         Adornment="Adornment.End"
+                                         AdornmentText="g"
+                                         HideSpinButtons="true"/>
+                    </div>
                 </MudItem>
 
                 @* Date of Birth *@
@@ -60,7 +81,7 @@
                 <MudTextField Label="Additional Data" Lines="6"
                               @bind-Value="_model.AdditionalData" For="@(() => _model.AdditionalData)" />
             </MudCardContent>
-            
+
 
             <MudCardActions>
                 <MudButton Variant="Variant.Filled" Class="ml-auto" Link="/">Back To List</MudButton>
@@ -72,13 +93,15 @@
 
 
 @code {
+
     [Parameter]
     public int? Id { get; set; }
 
 
     private string Title { get; set; } = "Add";
     private IEnumerable<PetTypeDto> PetTypes { get; set; }
-    private PetDto _model = new();
+    private UpsertPetViewModel _model = new();
+    private PetDto _petDto = new();
 
 
     protected override async Task OnInitializedAsync()
@@ -88,19 +111,18 @@
         if (Id != null)
         {
             Title = "Update";
-            _model = await _petRepository.GetPet(Id.Value);
+            _petDto = await _petRepository.GetPet(Id.Value);
         }
-        else
-        {
-            _model = new PetDto();
-        }
+        _model =_mapper.Map<PetDto, UpsertPetViewModel>(_petDto);
     }
 
     private async Task OnValidSubmit()
     {
+        _petDto = _mapper.Map<UpsertPetViewModel, PetDto>(_model);
+
         if (_model.Id != 0 && Title == "Update")
         {
-            var updatedResult = await _petRepository.UpdatePet(_model.Id, _model);
+            var updatedResult = await _petRepository.UpdatePet(_model.Id, _petDto);
             if (updatedResult != null)
             {
                 _navigationManager.NavigateTo($"pet/edit/{_model.Id}");
@@ -113,7 +135,7 @@
         }
         else
         {
-            var createResult = await _petRepository.CreatePet(_model);
+            var createResult = await _petRepository.CreatePet(_petDto);
             if (createResult != null)
             {
                 _navigationManager.NavigateTo("/");
@@ -125,4 +147,5 @@
             }
         }
     }
+
 }

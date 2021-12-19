@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Petclinic.Common\Petclinic.Common.csproj" />
     <ProjectReference Include="..\Petclinic.DataAccess\Petclinic.DataAccess.csproj" />
     <ProjectReference Include="..\Petclinic.Models\Petclinic.Models.csproj" />
   </ItemGroup>

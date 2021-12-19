@@ -1,4 +1,5 @@
 ﻿@using System.Net.Http
+@using AutoMapper
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.Forms
@@ -12,13 +13,13 @@
 @using MudBlazor
 @using InputType = MudBlazor.InputType
 
-
-@using Petclinic.Server.Helper 
+@using Petclinic.Server.Helper
 
 @using Petclinic.Models.Pet
 @using Petclinic.Business.Repository.IRepository
 
-@using Blazored.FluentValidation 
+@using Blazored.FluentValidation
 
 
 @inject IJSRuntime _jsRunTime
+@inject IMapper _mapper

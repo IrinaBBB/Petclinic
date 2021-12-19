@@ -1,12 +1,12 @@
 ﻿using System;
 using FluentValidation;
-using Petclinic.Models.Pet;
+using Petclinic.Models.Pet.ViewModels;
 
 namespace Petclinic.Server.Validators
 {
-    public class PetValidator : AbstractValidator<PetDto>
+    public class UpsertPetValidator : AbstractValidator<UpsertPetViewModel>
     {
-        public PetValidator()
+        public UpsertPetValidator()
         {
             RuleFor(p => p.Name).NotEmpty().WithMessage("Pet Name is Required");
             RuleFor(p => p.Name).MaximumLength(100).WithMessage("Pet Name Should not Exceed 100 Characters");
@@ -15,8 +15,11 @@ namespace Petclinic.Server.Validators
 
             RuleFor(p => p.Sex).NotEmpty().WithMessage("Sex is required");
 
-            RuleFor(p => p.Weight).LessThanOrEqualTo(100).WithMessage("Weight Should not Exceed 100 kilos");
-            RuleFor(p => p.Weight).GreaterThanOrEqualTo(0).WithMessage("Weight cannot be Less than 0");
+            RuleFor(w => w.Kilos).LessThanOrEqualTo(100).WithMessage("Cannot Exceed 100");
+            RuleFor(w => w.Kilos).GreaterThanOrEqualTo(0).WithMessage("Cannot be Negative");
+
+            RuleFor(w => w.Grams).LessThanOrEqualTo(999).WithMessage("Cannot Exceed 999");
+            RuleFor(w => w.Grams).GreaterThanOrEqualTo(0).WithMessage("Cannot be Negative");
 
             RuleFor(p => p.DateOfBirth)
                 .GreaterThan(DateTime.Now.AddYears(-100))

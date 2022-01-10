@@ -26,6 +26,14 @@ body {
     .hero-content {
         padding-top: 4.5rem;
     }
+    .col-lg-6 {
+        .img-fluid.d-none.d-lg-block {
+            transition: all .5s;
+            &:hover {
+                transform: translateY(-1rem) scale(1.1);
+            }
+        }
+    }
 }
 
 #newsletter {
@@ -33,6 +41,7 @@ body {
 }
 
 #boxes {
+
     .icon-wrapper {
         font-size: 5rem;
         color: $primary-light;
@@ -41,7 +50,11 @@ body {
         width: 100px;
     }
     .card {
+        transition: all .3s;
         height: 23rem;
+        &:hover {
+            transform: translateY(-1rem) scale(1.03);
+        }
     }
     div:nth-child(even) > div {
         background: $primary-light;
@@ -63,22 +76,25 @@ body {
     border-bottom: 1px #ddd solid;
 }
 
-#authors {
-    img {
-        margin-top: -50px;
-        transition: all 1.5s ease-out;
-    }
+#vets {
 
-    .card:hover {
-        background-color: rgba($primary-light, .85);
-        color: white;
-
-        & i.fab {
-            color: #fff;
+    .card {
+        transition: transform .3s ease-out;
+        img {
+            margin-top: -50px;
         }
+        &:hover {
+            background-color: rgba($primary-light, .85);
+            color: white;
+            transform: translateY(-1rem) scale(1.03);
 
-        & h5.text-muted {
-            color: #333 !important;
+            & i.fab {
+                color: #fff;
+            }
+
+            & h5.text-muted {
+                color: #333 !important;
+            }
         }
     }
 }

@@ -21,6 +21,12 @@ body {
 #hero .hero-content {
   padding-top: 4.5rem;
 }
+#hero .col-lg-6 .img-fluid.d-none.d-lg-block {
+  transition: all 0.5s;
+}
+#hero .col-lg-6 .img-fluid.d-none.d-lg-block:hover {
+  transform: translateY(-1rem) scale(1.1);
+}
 
 #newsletter {
   background-color: #e9ecef;
@@ -34,7 +40,11 @@ body {
   width: 100px;
 }
 #boxes .card {
+  transition: all 0.3s;
   height: 23rem;
+}
+#boxes .card:hover {
+  transform: translateY(-1rem) scale(1.03);
 }
 #boxes div:nth-child(even) > div {
   background: #548CF6;
@@ -55,18 +65,21 @@ body {
   border-bottom: 1px #ddd solid;
 }
 
-#authors img {
-  margin-top: -50px;
-  transition: all 1.5s ease-out;
+#vets .card {
+  transition: transform 0.3s ease-out;
 }
-#authors .card:hover {
+#vets .card img {
+  margin-top: -50px;
+}
+#vets .card:hover {
   background-color: rgba(84, 140, 246, 0.85);
   color: white;
+  transform: translateY(-1rem) scale(1.03);
 }
-#authors .card:hover i.fab {
+#vets .card:hover i.fab {
   color: #fff;
 }
-#authors .card:hover h5.text-muted {
+#vets .card:hover h5.text-muted {
   color: #333 !important;
 }
 

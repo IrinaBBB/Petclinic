@@ -1,6 +1,6 @@
-$primary: #283593;
-$primary-dark: #001064;
-$primary-light:	#5f5fc4;
+$primary: #3d4eca;
+$primary-light: #548CF6;
+$primary-dark: #325DE9;
 $grey: #e9ecef;
 $accent: #ebe645;
 
@@ -19,7 +19,7 @@ body {
 }
 
 #hero {
-    background-image: linear-gradient(to right bottom, rgba(darken($primary-dark, 10%), 0.95), rgba(lighten($primary-dark, 50%), 0.90)), url('../img/hero.jpg');
+    background-image: linear-gradient(to right bottom, rgba($primary-dark, 0.95), rgba($primary-light, 0.90)), url('../img/hero.jpg');
     background-position: center;
     object-fit: cover;
     min-height: 600px;
@@ -35,13 +35,16 @@ body {
 #boxes {
     .icon-wrapper {
         font-size: 5rem;
-        color: $primary;
+        color: $primary-light;
+    }
+    img {
+        width: 100px;
     }
     .card {
         height: 23rem;
     }
     div:nth-child(even) > div {
-        background: $primary;
+        background: $primary-light;
         h3 {
             color: white!important;
         } 
@@ -53,6 +56,36 @@ body {
         }
     }
 }
+
+.info-header {
+    width: 50%;
+    margin: auto;
+    border-bottom: 1px #ddd solid;
+}
+
+#authors {
+    img {
+        margin-top: -50px;
+        transition: all 1.5s ease-out;
+    }
+
+    .card:hover {
+        background-color: rgba($primary-light, .85);
+        color: white;
+
+        & i.fab {
+            color: #fff;
+        }
+
+        & h5.text-muted {
+            color: #333 !important;
+        }
+    }
+}
+
+//i.fab {
+//    color: #666;
+//}
 
 @media(max-width: 992px) {
     .mb-resp {

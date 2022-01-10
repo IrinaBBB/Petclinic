@@ -3,7 +3,7 @@ body {
 }
 
 .navbar {
-  box-shadow: 2px 2px 5px #5f5fc4;
+  box-shadow: 2px 2px 5px #548CF6;
   opacity: 0.9;
   background: #fff;
 }
@@ -13,7 +13,7 @@ body {
 }
 
 #hero {
-  background-image: linear-gradient(to right bottom, rgba(0, 8, 49, 0.95), rgba(100, 125, 255, 0.9)), url("../img/hero.jpg");
+  background-image: linear-gradient(to right bottom, rgba(50, 93, 233, 0.95), rgba(84, 140, 246, 0.9)), url("../img/hero.jpg");
   background-position: center;
   object-fit: cover;
   min-height: 600px;
@@ -28,13 +28,16 @@ body {
 
 #boxes .icon-wrapper {
   font-size: 5rem;
-  color: #283593;
+  color: #548CF6;
+}
+#boxes img {
+  width: 100px;
 }
 #boxes .card {
   height: 23rem;
 }
 #boxes div:nth-child(even) > div {
-  background: #283593;
+  background: #548CF6;
 }
 #boxes div:nth-child(even) > div h3 {
   color: white !important;
@@ -44,6 +47,27 @@ body {
 }
 #boxes div:nth-child(even) > div .icon-wrapper {
   color: white;
+}
+
+.info-header {
+  width: 50%;
+  margin: auto;
+  border-bottom: 1px #ddd solid;
+}
+
+#authors img {
+  margin-top: -50px;
+  transition: all 1.5s ease-out;
+}
+#authors .card:hover {
+  background-color: rgba(84, 140, 246, 0.85);
+  color: white;
+}
+#authors .card:hover i.fab {
+  color: #fff;
+}
+#authors .card:hover h5.text-muted {
+  color: #333 !important;
 }
 
 @media (max-width: 992px) {
